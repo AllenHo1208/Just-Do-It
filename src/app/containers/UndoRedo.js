@@ -15,8 +15,8 @@ let UndoRedo = ({ canUndo, canRedo, onUndo, onRedo }) => (
 
 const mapStateToProps = (state) => {
     return {
-        canUndo: state.todos.past.length > 0,
-        canRedo: state.todos.future.length > 0
+        canUndo: state.past.length > 0,
+        canRedo: state.future.length > 0
     };
 };
 

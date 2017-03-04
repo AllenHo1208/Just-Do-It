@@ -1,5 +1,3 @@
-import undoable, {distinctState} from 'redux-undo';
-
 // Worker todo Reducer
 const todo = (state = {}, action) => {
     switch (action.type) {
@@ -42,8 +40,4 @@ const todos = (state = [], action) => {
     }
 };
 
-const undoableTodos = undoable(todos, {
-    filter: distinctState()
-})
-
-export default undoableTodos;
+export default todos;
