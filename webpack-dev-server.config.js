@@ -9,7 +9,7 @@ const config = {
   entry: [
     'webpack/hot/dev-server',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, '/src/app/app.js'),
+    path.join(__dirname, '/src/app/index.js'),
   ],
   // Server Configuration options
   devServer: {
@@ -23,7 +23,7 @@ const config = {
   devtool: 'eval',
   output: {
     path: buildPath, // Path of output file
-    filename: 'app.js',
+    filename: 'index.js',
   },
   plugins: [
     // Enables Hot Modules Replacement
