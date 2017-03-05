@@ -5,7 +5,8 @@ const todo = (state = {}, action) => {
             return {
                 id: action.id,
                 text: action.text,
-                completed: false
+                completed: false,
+                deleted: false
             };
         case 'TOGGLE_TODO':
             if (state.id !== action.id) {
@@ -15,11 +16,19 @@ const todo = (state = {}, action) => {
                 ...state,
                 completed: !state.completed
             };
-            /* OR use below syntax:
-            Object.assign({}, state, {
-                completed: !state.completed
+        /* OR use below syntax:
+        Object.assign({}, state, {
+            completed: !state.completed
+        }
+        */
+        case 'REMOVE_TODO':
+            if (state.id !== action.id) {
+                return state;
             }
-            */
+            return {
+                ...state,
+                deleted: true
+            };
         default:
             return state;
     }
@@ -34,6 +43,8 @@ const todos = (state = [], action) => {
                 todo(undefined, action)
             ];
         case 'TOGGLE_TODO':
+            return state.map(t => todo(t, action));
+        case 'REMOVE_TODO':
             return state.map(t => todo(t, action));
         default:
             return state;
