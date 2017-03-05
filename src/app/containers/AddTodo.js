@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import { fullWhite } from 'material-ui/styles/colors';
+import TextField from 'material-ui/TextField';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import UndoRedo from './UndoRedo';
 
 /* The AddTodo can neither classify as a Container Component or a Presentational Component.
    As the input & the button are the presentational part, but dispatching an action onClick is the behavior which is usually specified by the container.
@@ -12,14 +17,25 @@ let AddTodo = ({ dispatch }) => { // receive context as the 2nd argument
     let input;
     return (
         <div>
-            <input ref={node => {
-                input = node;
-            }} />
-            <button onClick={() => {
-                if (!input.value.trim()) { return; }
-                dispatch(addTodo(input.value));
-                input.value = '';
-            }}>Add Todo</button>
+            <TextField
+                style={{ width: '50%' }}
+                floatingLabelText='Just Do It!'
+                id='todoInputField'
+            />
+            <FloatingActionButton
+                secondary={true}
+                mini={true}
+                style={{ margin: 1 }}
+                onClick={() => {
+                    const oTextField = document.getElementById('todoInputField');
+                    if (!(oTextField.value + '').trim()) { return; }
+                    dispatch(addTodo(oTextField.value));
+                    oTextField.value = '';
+                }}
+            >
+                <ContentAdd color={fullWhite} />
+            </FloatingActionButton>
+            <UndoRedo />
         </div>
     );
 };
@@ -27,7 +43,7 @@ let AddTodo = ({ dispatch }) => { // receive context as the 2nd argument
 /* The connect() code without any arugments generate a Container
    Component that does not subscribe to this store.
    However, that will pass dispatch to the component that it wraps.
-   In this case, it wraps my AddTodo Component. */
+   In this case, it wraps the AddTodo Component. */
 AddTodo = connect()(AddTodo);
 
 export default AddTodo;

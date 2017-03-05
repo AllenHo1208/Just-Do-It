@@ -1,16 +1,23 @@
 import React from 'react';
 import { ActionCreators as UndoActionCreators } from 'redux-undo';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import FlatButton from 'material-ui/FlatButton';
 
 let UndoRedo = ({ canUndo, canRedo, onUndo, onRedo }) => (
-    <p>
-        <button onClick={onUndo} disabled={!canUndo}>
-            Undo
-        </button>
-        <button onClick={onRedo} disabled={!canRedo}>
-            Redo
-        </button>
-    </p>
+    <span>
+        <FlatButton
+            onClick={onUndo}
+            disabled={!canUndo}
+            label="Undo"
+            style={{ minWidth: 'auto', margin: 1 }}
+        />
+        <FlatButton
+            onClick={onRedo}
+            disabled={!canRedo}
+            label="Redo"
+            style={{ minWidth: 'auto', margin: 1 }}
+        />
+    </span>
 );
 
 const mapStateToProps = (state) => {

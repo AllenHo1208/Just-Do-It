@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
-import undoable, {distinctState} from 'redux-undo';
+import undoable from 'redux-undo';
 
 // Combine all Reducers
 let todoApp = combineReducers({
@@ -9,8 +9,6 @@ let todoApp = combineReducers({
     visibilityFilter
 });
 
-todoApp = undoable(todoApp, {
-    filter: distinctState()
-})
+todoApp = undoable(todoApp);
 
 export default todoApp;
