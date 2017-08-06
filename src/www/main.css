@@ -6,9 +6,3 @@ body {
     font-size: 15px;
     line-height: 20px;
 }
-
-#root {
-    width : 450px;
-    /*width : 25vw;*/
-    zoom: 1.8;
-}

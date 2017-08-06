@@ -18,7 +18,7 @@ let AddTodo = ({ dispatch }) => { // receive context as the 2nd argument
     return (
         <div>
             <TextField
-                style={{ width: '50%' }}
+                style={{ width: '45%' }}
                 floatingLabelText='Just Do It!'
                 id='todoInputField'
             />

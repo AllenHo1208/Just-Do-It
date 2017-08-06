@@ -2,32 +2,41 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
-    <title>ToDo App</title>
-    <!-- Use minimum-scale=1 to enable GPU rasterization -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
-    <link rel="stylesheet" type="text/css" href="main.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <link rel="shortcut icon" href="favicon.ico"> -->
+	<title>Just Do It</title>
+	<!-- Use minimum-scale=1 to enable GPU rasterization -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta name="google-signin-client_id" content="124591562366-4b5b5jijpth2tlefot1k4aqdquefnb9h.apps.googleusercontent.com">
 </head>
 
 <body>
-    <div id="root"></div>
-    <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
-    <script>
-        var WebFontConfig = {
-            google: { families: ['Roboto:400,300,500:latin'] }
-        };
-        (function () {
-            var wf = document.createElement('script');
-            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
-    <script src="index.js"></script>
+	<!--Add buttons to initiate auth sequence and sign out-->
+	<button id="authorize-button" style="display: none;">Authorize</button>
+	<button id="signout-button" style="display: none;">Sign Out</button>
+	<button id="save-button">Save</button>
+	<pre id="content"></pre>
+	<div id="root"></div>
+	<!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
+	<script>
+		var WebFontConfig = {
+			google: { families: ['Roboto:400,300,500:latin'] }
+		};
+		(function () {
+			var wf = document.createElement('script');
+			wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+			wf.type = 'text/javascript';
+			wf.async = 'true';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(wf, s);
+		})();
+
+	</script>
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="index.js"></script>
 </body>
 
 </html>
