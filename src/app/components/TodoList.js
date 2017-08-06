@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Todo from './Todo'
+import Todo from './Todo';
 import { List } from 'material-ui/List';
 
 const TodoList = ({ todos, onTodoItemClick, onDeleteBnClick }) => (
