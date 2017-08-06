@@ -21,9 +21,10 @@ window.onbeforeunload = function (e) {
 	/* 
 	Compare the client data with the server data, if any difference, return non-null string, and ask user to click Save button manually 
 	*/
-	var sDialogText = 'Your latest changes have not yet saved, please SAVE them before close the page.';
-	e.returnValue = sDialogText;
-	return sDialogText;
+	// var sDialogText = 'Your latest changes have not yet saved, please SAVE them before close the page.';
+	// e.returnValue = sDialogText;
+	// return sDialogText;
+	return;
 };
 
 // Client ID and API key from the Developer Console

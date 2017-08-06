@@ -2,6 +2,7 @@ import React from 'react';
 import VisibilitySwitcher from '../containers/VisibilitySwitcher';
 import AddTodo from '../containers/AddTodo';
 import VisibleTodoList from '../containers/VisibleTodoList';
+import HideableProgressCircle from '../containers/HideableProgressCircle';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { blue500, blue700, deepOrange500 } from 'material-ui/styles/colors';
@@ -17,7 +18,8 @@ const oTodoAppMuiTheme = getMuiTheme({
 const App = () => (
     <MuiThemeProvider muiTheme={oTodoAppMuiTheme} >
         <div>
-            <VisibilitySwitcher />
+            <HideableProgressCircle />
+			<VisibilitySwitcher />
             <AddTodo />
             <VisibleTodoList />
         </div>

@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 // or : var Provider = require('react-redux').Provider;
 import { createStore } from 'redux';
 import App from './components/App';
-import { addTodo, toggleTodo, setVisibilityFilter } from './actions';
+import { addTodo, toggleTodo, setVisibilityFilter, setUsabilityFilter, updateProgress } from './actions';
 import todoApp from './reducers';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import isMobile from './utils/DeviceChecker';
@@ -27,10 +27,15 @@ store.subscribe(() => {
 });
 */
 
+store.dispatch(setUsabilityFilter(true));
+store.dispatch(updateProgress(true));
 window.onload = function () {
 	GoogleDriveAPI.handleClientLoad(function (oFile) {
 		GoogleDriveAPI.getFileContent(oFile.id, function (oFile, sJson) {
 			// console.info(JSON.stringify(oFile));
+			if (!oFile || !oFile.present || !Array.isArray(oFile.present.todos)) {
+				return;
+			}
 			oFile.present.todos.forEach(function (todo, index) {
 				store.dispatch(addTodo(todo.text));
 				if (todo.completed) {
@@ -38,6 +43,8 @@ window.onload = function () {
 				}
 			});
 			store.dispatch(setVisibilityFilter(oFile.present.visibilityFilter));
+			store.dispatch(setUsabilityFilter(false));
+			store.dispatch(updateProgress(false));
 		});
 	});
 }
@@ -45,8 +52,8 @@ window.onload = function () {
 $('#save-button').click(function () {
 	GoogleDriveAPI.save(store.getState(), function (oFile) {
 		GoogleDriveAPI.getFileContent(oFile.id, function (oFile, sJson) {
-			console.info('File saved:')
-			console.info(oFile);
+			// console.info('File saved:')
+			// console.info(oFile);
 		});
 	});
 });
